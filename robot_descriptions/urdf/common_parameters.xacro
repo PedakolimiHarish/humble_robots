@@ -1,21 +1,30 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
     
-    <material name="blue">
-        <color rgba="0 0 0.5 1" />
+    <material name="Blue">
+        <color rgba="0.0 0.0 0.5 1" />
     </material>
 
-    <material name="grey">
+    <material name="Grey">
         <color rgba="0.5 0.5 0.5 1" />
     </material>
 
-    <material name="orange">
-        <color rgba="1.0 0.5 0 1" />
+    <material name="Orange">
+        <color rgba="1.0 0.5 0.0 1" />
     </material>
 
-    <material name="yellow">
-        <color rgba="1.0 1.0 0 1" />
+    <material name="Yellow">
+        <color rgba="1.0 1.0 0.0 1" />
     </material>
+
+    <material name="Red">
+        <color rgba="1.0 0.0 0.0 1" />
+    </material>
+
+    <material name="Black">
+        <color rgba="0.0 0.0 0.0 1" />
+    </material>
+
 
     <xacro:macro name="box_inertia" params="mass length width height xyz rpy">
         <inertial>

@@ -21,13 +21,12 @@
     <!--  Parameters for Camera -->
     <xacro:camera link_name = "camera_link" parent_link = "base_link" joint_name = "camera_joint"
                   camera_length = "0.02" camera_width = "0.1" camera_height = "${base_length}" mass = "0.01"
-                  Vxyz = "0 0 0" Vrpy = "0 0 0" Jxyz = "${base_radius} 0 ${base_length/2}" Jrpy = "0 0 0"
-                  />
+                  xyz = "${base_radius} 0 ${base_length/2}" rpy = "0 0 0" />
 
-<!--  Parameters for Laser Sensor -->
-
-    <!-- <xacro:property name="lider" value ="0.15"/> -->
-
+    <!--  Parameters for Laser Sensor -->
+    <xacro:laser link_name = "laser_link" parent_link = "base_link" joint_name = "laser_joint"
+                  laser_radius = "0.05" laser_length = "0.1" mass = "0.01"
+                  xyz = "0 0 ${base_length + 0.1}" rpy = "0 0 0" /> <!-- Add laser_length to the xyz in int like 0.1 -->
 
 <!-- ********************** Base footprint link and joint ********************** -->
     <link name="base_footprint"/>
@@ -46,6 +45,7 @@
             <geometry>
                 <cylinder radius="${base_radius}" length="${base_length}"/>
             </geometry>
+            <material name="Blue"/>
         </visual>
 
         <collision>

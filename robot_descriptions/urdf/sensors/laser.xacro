@@ -1,37 +1,42 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    
 
-<xacro:macro name="camera" params=" link_name parent_link joint_name
-                                        Vxyz Vrpy 
+    <xacro:macro name="laser" params=" link_name parent_link joint_name
                                         laser_length laser_radius mass
-                                        Jxyz Jrpy">
+                                        xyz rpy">
+        
         <link name="${link_name}">
             <visual>
+                <origin xyz="0 0 ${-laser_length/2}" rpy="0 0 0"/>
                 <geometry>
                     <cylinder radius="${laser_radius}" length="${laser_length}"/>
                 </geometry>
                 <material name="red"/>
             </visual>
+
             <collision>
+                <origin xyz="0 0 ${-laser_length/2}" rpy="0 0 0"/>
                 <geometry>
                     <cylinder radius="${laser_radius}" length="${laser_length}"/>
                 </geometry>
             </collision>
-            <xacro:inertial_cylinder mass="0.1" length="${laser_length}" radius="${laser_radius}">
-                <origin xyz="0 0 0" rpy="0 0 0"/>
-            </xacro:inertial_cylinder>
+
+            <xacro:cylinder_inertia mass="${mass}" height="${laser_length}" radius="${laser_radius}" 
+                                    xyz="0 0 0" rpy="0 0 0" />
+                
         </link>
 
-        <joint name="laser_joint" type="fixed">
-            <origin xyz="0.25 0 0.1" rpy="0 0 0"/>
-            <parent link="chassis"/>
+        <joint name="${joint_name}" type="fixed">
+            <origin xyz="${xyz}" rpy="${rpy}"/>
+            <parent link="${parent_link}"/>
             <child link="${link_name}"/>
         </joint>
 
         <gazebo reference="${link_name}">
             <material>Gazebo/Red</material>
-            <sensor name="laser" type="ray">
-                <pose> 0 0 0 0 0 0 </pose>
+            <sensor name="laser_sensor" type="ray">
+                <pose> 1 0 0 0 0 0 </pose>
                 <visualize>true</visualize>
                 <update_rate>10</update_rate>
                 <ray> 
@@ -44,13 +49,13 @@
                     </scan>
                     <range>
                         <min>0.3</min>
-                        <max>12</max>
+                        <max>5</max>
                     </range>
                 </ray>
                 <plugin name="laser_controller" filename="libgazebo_ros_ray_sensor.so">
-                    <ros>
+                    <!-- <ros>
                         <argument>~/out:=scan</argument>
-                    </ros>
+                    </ros> -->
                     <output_type>sensor_msgs/LaserScan</output_type>
                     <frame_name>${link_name}</frame_name>
                 </plugin>
