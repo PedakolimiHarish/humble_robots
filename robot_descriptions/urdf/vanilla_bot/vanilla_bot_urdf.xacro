@@ -7,7 +7,5 @@
     <xacro:include filename="$(find robot_descriptions)/urdf/plugins/laser.xacro" />
     <xacro:include filename="$(find robot_descriptions)/urdf/plugins/diff_drive.xacro" />
     <xacro:include filename="vanilla_bot_base.xacro" />
-    
-    <!-- <xacro:include filename="vanilla_bot_gazebo.xacro" />  -->
 
 </robot>
