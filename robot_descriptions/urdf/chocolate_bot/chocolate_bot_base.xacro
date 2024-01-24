@@ -34,12 +34,15 @@
             <material name="Blue"/>
         </visual>
 
-        <!-- <collision>
+        <collision>
             <origin xyz="0.0 0.0 0" rpy="0.0 0.0 0.0"/>
             <geometry>
-                <box size="0.0 0.0 0.0"/>
+                <box size="0.15 0.10 0.06"/>
             </geometry>
-        </collision> -->
+        </collision>
+
+        <xacro:box_inertia mass="1.5" length="0.15" width="0.10" height="0.06"
+                            xyz="0 0 0" rpy="0 0 0" />
 
     </link>
 
@@ -68,12 +71,12 @@
                 <material name="Black" />
             </visual>
 
-            <!-- <collision>
+            <collision>
                 <origin xyz="0 0 0" rpy="0 0 0" />
                 <geometry>
-                    <mesh filename="file:///$(find robot_descriptions)/urdf/chocolate_bot/meshes/wheel_rim.dae"  scale="10 10 10"/>
+                    
                 </geometry>
-            </collision> -->
+            </collision>
 
             <!-- <xacro:cylinder_inertia mass="0.05" radius="${wheel_radius}" height="${wheel_length}" 
                                     xyz="0 0 0" rpy="${pi / 2.0} 0 0" /> -->
