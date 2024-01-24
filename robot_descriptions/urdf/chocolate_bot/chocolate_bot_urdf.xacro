@@ -2,9 +2,7 @@
 <robot name="chocolate_bot" xmlns:xacro="http://www.ros.org/wiki/xacro">
     
     <xacro:include filename="$(find robot_descriptions)/urdf/common_parameters.xacro" />
-    <!-- <xacro:include filename="$(find robot_descriptions)/urdf/plugins/imu.xacro" />
-    <xacro:include filename="$(find robot_descriptions)/urdf/plugins/camera.xacro" /> -->
-
+    <xacro:include filename="$(find robot_descriptions)/urdf/plugins/skid_steer_drive.xacro" />
     <xacro:include filename="chocolate_bot_base.xacro" />
 
 </robot>

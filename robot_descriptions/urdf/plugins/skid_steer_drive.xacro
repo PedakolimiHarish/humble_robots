@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <xacro:macro name="skid_steer_drive" params=" leftFrontJoint rightFrontJoint leftRearJoint rightRearJoint robotBaseFrame 
+                                                    wheelDiameter wheelSeparation">
+
+        <gazebo>
+            <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_diff_drive.so">
+                
+                <!-- Number of wheel pairs -->
+                <num_wheel_pairs>2</num_wheel_pairs>
+                
+                <!-- wheels0 -->
+                <left_joint>${leftFrontJoint}</left_joint>
+                <right_joint>${rightFrontJoint}</right_joint>
+
+                <!-- wheels1-->
+                <left_joint>${leftRearJoint}</left_joint>
+                <right_joint>${rightRearJoint}</right_joint>
+
+                <!-- kinematics -->
+                <wheel_separation>${wheelSeparation}</wheel_separation>
+                <wheel_separation>${wheelSeparation}</wheel_separation>
+                
+                <wheel_diameter>${wheelDiameter}</wheel_diameter>
+                <wheel_diameter>${wheelDiameter}</wheel_diameter>
+                
+                <!-- limits -->
+                <max_wheel_torque>20</max_wheel_torque>
+                <max_wheel_acceleration>1.0</max_wheel_acceleration>
+                
+                <robotBaseFrame>${robotBaseFrame}</robotBaseFrame>
+                
+                <!-- output -->
+                <update_rate>30.0</update_rate>
+                <odometry_frame>odom</odometry_frame>
+                <publish_odom>true</publish_odom>
+                <publish_odom_tf>true</publish_odom_tf>
+                <publish_wheel_tf>true</publish_wheel_tf>
+
+                
+                <robot_base_frame>${robotBaseFrame}</robot_base_frame>
+            </plugin>
+        </gazebo>
+
+    </xacro:macro>
+</robot>
+
