@@ -55,14 +55,6 @@
                 <material name="Red" />
             </visual>
 
-<!--             <visual name="tyre">
-                <origin xyz="0 0 0" rpy="0 0 0" />
-                <geometry>
-                    <mesh filename="file:///$(find robot_descriptions)/urdf/chocolate_bot/meshes/wheel_tyre.dae"  scale="10 10 10"/>
-                </geometry>
-                <material name="Black" />
-            </visual> -->
-
             <collision>
                 <origin xyz="${Cxyz}" rpy="0 1.57 0" />
                 <geometry>
@@ -84,6 +76,10 @@
         <gazebo reference="${prefix}_wheel_link">
             <mu1 value="1" />
             <mu2 value="1" />
+            <kp value="500000.0" />
+            <kd value="10.0"/>
+            <minDepth value="0.001"/>
+            <maxVel value="1"/>
         </gazebo>
 
     </xacro:macro>

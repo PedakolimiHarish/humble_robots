@@ -6,17 +6,19 @@
 
 ## TODO
 
-- skid steer drive -done
 - ackerman steering
+- stero camera
+- rgbd camera
 - adding more plugins
 - 6 and 4 DOF robot arms
 - adding a drone 
+- multi robot system
 
 ## Current work 
 
 - 2 wheel robot URDF is done (Vanilla_bot)
 - Added few plugines
-- working on 4 robot (choclate_bot)
+- working on 4 robot is done (choclate_bot)
 
 ## use full plugins 
     1- camera
@@ -24,3 +26,6 @@
     3- laser
     4- diff drive
     5- skid_steer_drive
+
+
+## nav2 started
